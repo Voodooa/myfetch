@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $.ajax({
+          url: 'https://web-app-php-houssais1.azurewebsites.net',
+          dataType: 'json',
+          success: function(data) {
+            var table = $('<table></table>');
+            var header = $('<tr></tr>')
+              .append($('<th>Id</th>'))
+              .append($('<th>Username</th>'))
+              .append($('<th>tel</th>'));
+            table.append(header);
+            for (var i = 0; i < data.length; i++) {
+              var row = $('<tr></tr>')
+                .append($('<td>' + data[i].id + '</td>'))
+                .append($('<td>' + data[i].username + '</td>'))
+                .append($('<td>' + data[i].tel + '</td>'));
+              table.append(row);
+            }
+            $('body').append(table);
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
